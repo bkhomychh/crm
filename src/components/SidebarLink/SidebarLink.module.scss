@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 14rem;
+
+  font-family: 'PlusJakartaSans-Medium';
+  font-size: 16rem;
+  line-height: 24rem;
+  color: var(--color-light);
+
+  svg {
+    width: 18rem;
+    height: 18rem;
+    fill: var(--color-light);
+  }
+}
