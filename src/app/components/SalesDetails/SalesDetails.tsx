@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
 import styles from './SalesDetails.module.scss';
+import mainStyles from '@/scss/main.module.scss';
+import clsx from 'clsx';
 
 const data = [
   {
@@ -44,7 +46,9 @@ const data = [
 export default function SalesDetails() {
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>Sales details</h2>
+      <h2 className={clsx(mainStyles.sectionTitle, styles.title)}>
+        Sales details
+      </h2>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>

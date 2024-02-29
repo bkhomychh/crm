@@ -28,7 +28,8 @@ body {
   min-height: 100%;
 
   font-size: 14rem;
-  font-family: PlusJakartaSans-Regular;
+  font-family: PlusJakartaSans;
+  font-weight: 400;
   background-color: var(--color-light);
 }
 

@@ -1,4 +1,9 @@
-import { CompanyCategories, SalesDetails, Statistics } from '@/components';
+import {
+  CompanyCategories,
+  Countries,
+  SalesDetails,
+  Statistics,
+} from '@/components';
 import styles from './page.module.scss';
 
 export interface DashboardProps {
@@ -13,6 +18,7 @@ export default function Dashboard({ children }: DashboardProps) {
         <SalesDetails />
         <CompanyCategories />
       </div>
+      <Countries />
     </>
   );
 }

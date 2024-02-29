@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-family: 'PlusJakartaSans-SemiBold';
+  font-family: PlusJakartaSans;
   font-size: 30rem;
   font-weight: 600;
   line-height: 36rem;
@@ -36,13 +36,15 @@
 }
 
 .userName {
-  font-family: 'PlusJakartaSans-SemiBold';
+  font-family: PlusJakartaSans;
+  font-weight: 600;
   font-size: 15rem;
   line-height: 24rem;
 }
 
 .userEmail {
-  font-family: 'PlusJakartaSans-Light';
+  font-family: PlusJakartaSans;
+  font-weight: 300;
   font-size: 14rem;
   line-height: 20rem;
 }

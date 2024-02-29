@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import styles from './CompanyCategories.module.scss';
+import mainStyles from '@/scss/main.module.scss';
 
 const data = [
   {
@@ -48,7 +49,7 @@ const data = [
 export default function SalesDetails() {
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>Categories of companies</h2>
+      <h2 className={mainStyles.sectionTitle}>Categories of companies</h2>
 
       <ul className={styles.categoryList}>
         {data.map(({ id, name, number }) => (

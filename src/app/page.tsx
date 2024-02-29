@@ -1,4 +1,4 @@
-import StatusLabel, { Status } from '../components/status-label';
+import { StatusLabel } from '@/components';
 import { headers } from 'next/headers';
 
 export default function Home() {
