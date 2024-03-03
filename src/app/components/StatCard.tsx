@@ -1,5 +1,4 @@
 import styles from '@/styles/dashboard/stat-card.module.scss';
-import Link from 'next/link';
 
 export interface StatCardProps {
   title: string;

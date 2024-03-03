@@ -5,6 +5,54 @@
 
   background-color: var(--color-accent-purple);
   border-radius: 4rem;
+
+  background: radial-gradient(
+    var(--color-accent-green),
+    var(--color-accent-purple)
+  );
+  background-position: left bottom;
+
+  &:nth-child(4n + 1) {
+    background: radial-gradient(
+      ellipse at top left,
+      var(--color-light) 0%,
+      var(--color-accent-green) 20%,
+      var(--color-accent-green) 40%,
+      var(--color-accent-purple) 70%,
+      var(--color-accent-purple) 100%
+    );
+  }
+
+  &:nth-child(4n + 2) {
+    background: radial-gradient(
+      ellipse at bottom right,
+      var(--color-light) 0%,
+      var(--color-accent-green) 40%,
+      var(--color-accent-purple) 70%,
+      var(--color-accent-purple) 100%
+    );
+  }
+
+  &:nth-child(4n + 3) {
+    background: radial-gradient(
+      ellipse at bottom left,
+      var(--color-light) 0%,
+      var(--color-accent-green) 40%,
+      var(--color-accent-purple) 70%,
+      var(--color-accent-purple) 100%
+    );
+  }
+
+  &:nth-child(4n + 4) {
+    background: radial-gradient(
+      ellipse at top right,
+      var(--color-light) 0%,
+      var(--color-accent-green) 20%,
+      var(--color-accent-green) 40%,
+      var(--color-accent-purple) 70%,
+      var(--color-accent-purple) 100%
+    );
+  }
 }
 
 .content {
@@ -40,6 +88,7 @@
 
 .number {
   font-size: 60rem;
+  font-weight: 600;
   line-height: 60rem;
   letter-spacing: 0rem;
 }
