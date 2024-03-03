@@ -1,0 +1,32 @@
+.wrapper {
+  padding: 32rem 40rem;
+  background-color: var(--color-bg-secondary);
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0 8rem;
+  border-collapse: separate;
+
+  th {
+    padding: 0rem 12rem 12rem 0;
+  }
+
+  td {
+    padding: 12rem 12rem 12rem 0;
+  }
+}
+
+.thead tr {
+  height: 28rem;
+}
+
+.tbody {
+  tr {
+    height: 36rem;
+
+    &:nth-child(odd) {
+      background-color: var(--color-bg-primary);
+    }
+  }
+}

@@ -4,6 +4,7 @@ import {
   SummaryTableCell,
   SummaryTableHeader,
 } from '@/app/components';
+import companyImg from '@/assets/images/company.png';
 
 const data = [
   {
@@ -60,7 +61,7 @@ export default function Page({}: PageProps) {
       >
         {data.map(({ id, name, sold, income }) => (
           <tr key={id}>
-            <SummaryTableCell>{name}</SummaryTableCell>
+            <SummaryTableCell imgSrc={companyImg}>{name}</SummaryTableCell>
             <SummaryTableCell align="center">{sold}</SummaryTableCell>
             <SummaryTableCell align="center">${income}</SummaryTableCell>
           </tr>

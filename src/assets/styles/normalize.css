@@ -355,10 +355,18 @@ template {
 a,
 button {
   cursor: pointer;
+  color: inherit;
 }
 
 a {
   text-decoration: none;
+}
+
+button,
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 img {

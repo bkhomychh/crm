@@ -1,0 +1,38 @@
+.wrapper {
+  margin: 0 auto;
+  padding: 0 14rem;
+  height: 28rem;
+  display: inline-flex;
+  align-items: center;
+
+  border-radius: 28rem;
+
+  &.success {
+    color: var(--color-success);
+    background-color: var(--color-success-blur);
+  }
+  &.error {
+    color: var(--color-error);
+    background-color: var(--color-error-blur);
+  }
+  &.warning {
+    color: var(--color-warning);
+    background-color: var(--color-warning-blur);
+  }
+  &.info {
+    color: var(--color-info);
+    background-color: var(--color-info-blur);
+  }
+
+  &::before {
+    content: '';
+
+    margin-right: 8rem;
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+
+    background-color: currentColor;
+    border-radius: 4rem;
+  }
+}

@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+
+  padding: 0 44rem 0 12rem;
+  width: 455rem;
+  height: 44rem;
+
+  border: 1rem solid var(--color-border);
+  border-radius: 4rem;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+
+  font-size: 14rem;
+  font-weight: 500;
+  line-height: 20rem;
+  color: var(--color-text-primary);
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  right: 12rem;
+
+  transform: translateY(-50%);
+
+  svg {
+    width: 20rem;
+    height: 20rem;
+
+    transition: transform var(--transition);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

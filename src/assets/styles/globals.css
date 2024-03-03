@@ -28,5 +28,6 @@ body {
 
   font-size: 14rem;
   font-weight: 400;
+  color: var(--color-text-primary);
   background-color: var(--color-light);
 }

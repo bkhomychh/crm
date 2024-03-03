@@ -5,8 +5,26 @@
   --color-accent-purple: #e9d5ff;
   --color-border: #d1d5db;
 
+  --color-text-primary: #111827;
+  --color-text-secondary: #637381;
+
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f3f4f6;
+
+  --color-success: #15803d;
+  --color-success-light: #34d399;
+  --color-success-blur: #dcfce7;
+  --color-error: #b91c1c;
+  --color-error-light: #fb7185;
+  --color-error-blur: #fee2e2;
+  --color-warning: #c2410c;
+  --color-warning-light: #fb923c;
+  --color-warning-blur: #ffedd5;
+  --color-info: #1d4ed8;
+  --color-info-light: #60a5fa;
+  --color-info-blur: #dbeafe;
+
+  --transition: 250ms ease-in-out;
 
   --text-title: normal 600 30rem/36rem;
 }
