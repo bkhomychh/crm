@@ -1,0 +1,31 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 8rem 20rem;
+
+    &:first-of-type {
+      width: 252rem;
+    }
+
+    &:last-of-type {
+      width: 104rem;
+    }
+  }
+}
+
+.thead tr {
+  height: 28rem;
+}
+
+.tbody {
+  tr {
+    height: 36rem;
+
+    &:nth-child(odd) {
+      background-color: var(--color-bg-primary);
+    }
+  }
+}

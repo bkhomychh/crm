@@ -1,0 +1,47 @@
+.header {
+  padding: 0 28rem 0 40rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 92rem;
+
+  border-bottom: 1rem solid var(--color-border);
+}
+
+.title {
+  font-size: 30rem;
+  font-weight: 600;
+  line-height: 36rem;
+}
+
+.wrapper {
+  padding-left: 36rem;
+  display: flex;
+
+  border-left: 1rem solid var(--color-border);
+}
+
+.avatar {
+  margin-right: 12rem;
+  width: 44rem;
+  height: 44rem;
+
+  border-radius: 44rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 15rem;
+  line-height: 24rem;
+}
+
+.userEmail {
+  font-weight: 300;
+  font-size: 14rem;
+  line-height: 20rem;
+}

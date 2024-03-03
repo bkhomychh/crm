@@ -1,0 +1,30 @@
+.cell {
+  font-size: 12rem;
+  line-height: 16rem;
+  color: var(--color-dark);
+
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+
+  &:first-child {
+    border-radius: 2rem 0 0 2rem;
+  }
+
+  &:last-child {
+    border-radius: 0 2rem 2rem 0;
+  }
+
+  &:nth-child(3n + 1) {
+    text-align: left;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+  }
+
+  &:nth-child(3n + 2) {
+    background-color: var(--color-accent-purple);
+  }
+  &:nth-child(3n + 3) {
+    background-color: var(--color-accent-green);
+  }
+}

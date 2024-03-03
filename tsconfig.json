@@ -22,7 +22,7 @@
       "@/*": ["./src/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/components": ["./src/app/components"],
-      "@/scss/*": ["./src/assets/styles/scss/*"]
+      "@/styles/*": ["./src/assets/styles/sass/*"]
     }
   },
   "include": [

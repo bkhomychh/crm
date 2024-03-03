@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 4rem;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.title {
+  padding: 20rem;
+
+  font-size: 20rem;
+  font-weight: 500;
+  line-height: 28rem;
+  letter-spacing: 0rem;
+  color: var(--color-dark);
+}

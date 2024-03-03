@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  min-height: 100%;
+}
+
+.container {
+  flex-grow: 1;
+}
+
+.sectionTitle {
+  padding: 20rem;
+
+  font-size: 20rem;
+  font-weight: 500;
+  line-height: 28rem;
+  letter-spacing: 0rem;
+  color: var(--color-dark);
+}

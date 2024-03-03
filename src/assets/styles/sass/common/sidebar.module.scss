@@ -1,0 +1,55 @@
+.aside {
+  padding: 32rem 0rem 40rem;
+  display: flex;
+  flex-direction: column;
+  width: 240rem;
+  min-width: 240rem;
+  min-height: 100%;
+
+  background-color: var(--color-dark);
+}
+
+.logo {
+  margin: 0 auto 74rem;
+  display: flex;
+  align-items: center;
+  width: 122rem;
+  height: 25rem;
+}
+
+.links {
+  margin-bottom: 24rem;
+  padding-left: 16rem;
+  padding-right: 4rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 28rem;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.exitBtn {
+  position: sticky;
+  bottom: 40rem;
+
+  margin: auto auto 0;
+  display: flex;
+  align-items: center;
+  column-gap: 8rem;
+
+  font-weight: 500;
+  font-size: 16rem;
+  line-height: 24rem;
+  color: var(--color-light);
+  background-color: transparent;
+  border: none;
+
+  svg {
+    width: 18rem;
+    height: 18rem;
+    fill: var(--color-light);
+  }
+}

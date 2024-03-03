@@ -1,8 +1,9 @@
-export { default as Sidebar } from './Sidebar/Sidebar';
-export { default as SidebarLink } from './SidebarLink/SidebarLink';
-export { default as Header } from './Header/Header';
-export { default as Statistics } from './Statistics/Statistics';
-export { default as SalesDetails } from './SalesDetails/SalesDetails';
-export { default as CompanyCategories } from './CompanyCategories/CompanyCategories';
-export { default as Countries } from './Countries/Countries';
-export { default as StatusLabel } from './StatusLabel/StatusLabel';
+export { default as Sidebar } from './Sidebar';
+export { default as SidebarLink } from './SidebarLink';
+export { default as Header } from './Header';
+export { default as StatusLabel } from './StatusLabel';
+export { default as StatCard } from './StatCard';
+export { default as DashboardCard } from './DashboardCard';
+export { default as SummaryTable } from './SummaryTable';
+export { default as SummaryTableCell } from './SummaryTableCell';
+export { default as SummaryTableHeader } from './SummaryTableHeader';
