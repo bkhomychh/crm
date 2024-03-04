@@ -1,9 +1,11 @@
 'use client';
 
 import {
+  Button,
   CompaniesTable,
   CompaniesTableHeader,
   CompaniesTableRow,
+  ToolBar,
 } from '@/app/components';
 import { Status } from '@/app/components/StatusLabel';
 import companyImg from '@/assets/images/company.png';
@@ -13,6 +15,9 @@ export interface PageProps {}
 export default function Page({}: PageProps) {
   return (
     <>
+      <ToolBar>
+        <Button onClick={() => null}>Add company</Button>
+      </ToolBar>
       <CompaniesTable
         headers={
           <>

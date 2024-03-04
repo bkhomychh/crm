@@ -2,6 +2,13 @@
 
 import { useEffect } from 'react';
 import { notFound } from 'next/navigation';
+import {
+  Button,
+  CompanyInfo,
+  CompanyPromotions,
+  ToolBar,
+} from '@/app/components';
+import styles from '@/styles/companies/page.module.scss';
 
 interface PageProps {
   params: { id: string };
@@ -21,8 +28,13 @@ export default function Page({ params }: PageProps) {
 
   return (
     <>
-      <h1>Company ({params.id})</h1>
-      <p>{new Date().toLocaleTimeString()}</p>
+      <ToolBar>
+        <Button onClick={() => null}>Add promotion</Button>
+      </ToolBar>
+      <div className={styles.container}>
+        <CompanyInfo companyId="1" />
+        <CompanyPromotions />
+      </div>
     </>
   );
 }

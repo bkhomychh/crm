@@ -7,9 +7,13 @@ export { default as DashboardCard } from './DashboardCard';
 export { default as SummaryTable } from './SummaryTable';
 export { default as SummaryTableCell } from './SummaryTableCell';
 export { default as SummaryTableHeader } from './SummaryTableHeader';
+
 export { default as Button } from './Button';
 export { default as SearchField } from './SearchField';
 export { default as ToolBar } from './Toolbar';
 export { default as CompaniesTable } from './CompaniesTable';
 export { default as CompaniesTableHeader } from './CompaniesTableHeader';
 export { default as CompaniesTableRow } from './CompaniesTableRow';
+export { default as CompanyInfo } from './CompanyInfo';
+export { default as CompanyPromotions } from './CompanyPromotions';
+export { default as Promotion } from './Promotion';

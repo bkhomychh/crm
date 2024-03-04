@@ -1,15 +1,17 @@
 'use client';
 
-import { Button, SearchField } from '@/components';
+import { SearchField } from '@/components';
 import styles from '@/styles/common/toolbar.module.scss';
 
-export interface ToolbarProps {}
+export interface ToolbarProps {
+  children: React.ReactNode;
+}
 
-export default function Toolbar({}: ToolbarProps) {
+export default function Toolbar({ children }: ToolbarProps) {
   return (
     <div className={styles.wrapper}>
       <SearchField />
-      <Button onClick={() => null}>Add company</Button>
+      {children}
     </div>
   );
 }
