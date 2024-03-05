@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import {
   Button,
   CompaniesTable,
@@ -13,10 +15,14 @@ import companyImg from '@/assets/images/company.png';
 export interface PageProps {}
 
 export default function Page({}: PageProps) {
+  const router = useRouter();
+
   return (
     <>
       <ToolBar>
-        <Button onClick={() => null}>Add company</Button>
+        <Button onClick={() => router.push('/companies/new')}>
+          Add company
+        </Button>
       </ToolBar>
       <CompaniesTable
         headers={

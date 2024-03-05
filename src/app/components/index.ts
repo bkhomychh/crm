@@ -17,3 +17,4 @@ export { default as CompaniesTableRow } from './CompaniesTableRow';
 export { default as CompanyInfo } from './CompanyInfo';
 export { default as CompanyPromotions } from './CompanyPromotions';
 export { default as Promotion } from './Promotion';
+export { default as NewCompanyForm } from './NewCompanyForm';
