@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import {
   Button,
   CompanyInfo,
   CompanyPromotions,
   ToolBar,
 } from '@/app/components';
-import styles from '@/styles/companies/page.module.scss';
+import styles from '@/styles/companies/[id]/page.module.scss';
 
 interface PageProps {
   params: { id: string };
@@ -19,6 +19,8 @@ interface PageProps {
 // }
 
 export default function Page({ params }: PageProps) {
+  const router = useRouter();
+
   useEffect(() => {
     const id = Number.parseInt(params.id);
     if (Number.isNaN(id)) {
@@ -29,7 +31,9 @@ export default function Page({ params }: PageProps) {
   return (
     <>
       <ToolBar>
-        <Button onClick={() => null}>Add promotion</Button>
+        <Button onClick={() => router.push('/companies/1/new-promotion')}>
+          Add promotion
+        </Button>
       </ToolBar>
       <div className={styles.container}>
         <CompanyInfo companyId="1" />

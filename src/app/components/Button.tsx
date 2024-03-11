@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className: string;
+  className?: string;
   children: React.ReactNode;
 }
 

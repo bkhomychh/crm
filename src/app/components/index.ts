@@ -18,3 +18,8 @@ export { default as CompanyInfo } from './CompanyInfo';
 export { default as CompanyPromotions } from './CompanyPromotions';
 export { default as Promotion } from './Promotion';
 export { default as NewCompanyForm } from './NewCompanyForm';
+export { default as NewPromotionForm } from './NewPromotionForm';
+export { default as Input } from './Input';
+export { default as Label } from './Label';
+export { default as ModalWrapper } from './ModalWrapper';
+

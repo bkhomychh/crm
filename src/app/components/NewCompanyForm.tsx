@@ -2,14 +2,13 @@
 
 import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
-import clsx from 'clsx';
 
-import { Button } from '@/components';
+import { Button, Input, Label } from '@/components';
 import styles from '@/styles/companies/new/new-company-form.module.scss';
 
-export interface NewCompanyFormProps {}
+export interface NewPromotionFormProps {}
 
-export default function NewCompanyForm({}: NewCompanyFormProps) {
+export default function NewPromotionForm({}: NewPromotionFormProps) {
   const [image, setImage] = useState<File | null>(null);
 
   const handleImageUpload = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -52,41 +51,41 @@ export default function NewCompanyForm({}: NewCompanyFormProps) {
               </div>
             </label>
           </div>
-          <label className={styles.label}>
+          <Label className={styles.label}>
             Status
-            <input className={styles.input} type="text" placeholder="Status" />
-          </label>
-          <label className={styles.label}>
+            <Input className={styles.input} type="text" placeholder="Status" />
+          </Label>
+          <Label className={styles.label}>
             Country
-            <input className={styles.input} type="text" placeholder="Country" />
-          </label>
+            <Input className={styles.input} type="text" placeholder="Country" />
+          </Label>
         </div>
 
         <div className={styles.container}>
-          <label className={styles.label}>
+          <Label className={styles.label}>
             Name
-            <input className={styles.input} type="text" placeholder="Name" />
-          </label>
-          <label className={styles.label}>
+            <Input className={styles.input} type="text" placeholder="Name" />
+          </Label>
+          <Label className={styles.label}>
             Category
-            <input
+            <Input
               className={styles.input}
               type="text"
               placeholder="Category"
             />
-          </label>
-          <label className={styles.label}>
+          </Label>
+          <Label className={styles.label}>
             Joined date
-            <input className={styles.input} type="text" placeholder="Date" />
-          </label>
-          <label className={styles.label}>
+            <Input className={styles.input} type="text" placeholder="Date" />
+          </Label>
+          <Label className={styles.label}>
             Description
-            <input
+            <Input
               className={styles.input}
               type="text"
               placeholder="Description"
             />
-          </label>
+          </Label>
         </div>
       </div>
 

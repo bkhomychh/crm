@@ -1,0 +1,49 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  padding-left: 240rem;
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--color-backdrop);
+  overflow: auto;
+}
+
+.modal {
+  position: relative;
+
+  margin: 20vh 244rem;
+  padding: 28rem;
+  width: 100%;
+  height: max-content;
+
+  border-radius: 8rem;
+  background-color: var(--color-bg-secondary);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12rem;
+  right: 12rem;
+
+  width: 24rem;
+  height: 24rem;
+
+  background-color: transparent;
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+
+  svg {
+    width: 24rem;
+    height: 24rem;
+
+    transition: transform var(--transition);
+  }
+}
