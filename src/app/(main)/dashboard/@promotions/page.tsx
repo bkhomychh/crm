@@ -4,11 +4,13 @@ import {
   SummaryTableCell,
   SummaryTableHeader,
 } from '@/app/components';
-import companyImg from '@/assets/images/company.png';
+import { getPromotions } from '@/lib/api';
 
 export interface PageProps {}
 
-export default function Page({}: PageProps) {
+export default async function Page({}: PageProps) {
+  const data = await getPromotions();
+
   return (
     <DashboardCard title="Promotions">
       <SummaryTable
@@ -20,55 +22,17 @@ export default function Page({}: PageProps) {
           </>
         }
       >
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
-        <tr>
-          <SummaryTableCell imgSrc={companyImg}>
-            Costco Wholesale
-          </SummaryTableCell>
-          <SummaryTableCell>Norem ipsum dolor </SummaryTableCell>
-          <SummaryTableCell align="center">-40%</SummaryTableCell>
-        </tr>
+        {data
+          .slice(0, 7)
+          .map(({ id, companyTitle, discount, title, avatar }) => (
+            <tr key={id}>
+              <SummaryTableCell imgSrc={avatar}>
+                {companyTitle}
+              </SummaryTableCell>
+              <SummaryTableCell>{title}</SummaryTableCell>
+              <SummaryTableCell align="center">-{discount}%</SummaryTableCell>
+            </tr>
+          ))}
       </SummaryTable>
     </DashboardCard>
   );

@@ -1,15 +1,24 @@
 export interface LayoutProps {
   children: React.ReactNode;
   header: React.ReactNode;
+  toolbar: React.ReactNode;
   modal: React.ReactNode;
 }
 
-export default function Layout({ header, modal, children }: LayoutProps) {
+export default function Layout({
+  header,
+  toolbar,
+  modal,
+  children,
+}: LayoutProps) {
   return (
     <>
       {header}
       {modal}
-      <main>{children}</main>
+      <main>
+        {toolbar}
+        {children}
+      </main>
     </>
   );
 }

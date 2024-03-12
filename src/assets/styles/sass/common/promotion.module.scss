@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  flex-direction: column;
+
   border-radius: 4rem;
   overflow: hidden;
 }
@@ -37,6 +40,7 @@
 
 .info {
   padding: 20rem;
+  flex-grow: 1;
 
   color: var(--color-text-primary);
   background-color: var(--color-bg-secondary);

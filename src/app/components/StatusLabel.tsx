@@ -1,28 +1,22 @@
 import clsx from 'clsx';
 
 import styles from '@/styles/companies/status-label.module.scss';
-
-export enum Status {
-  ACTIVE = 'active',
-  NOT_ACTIVE = 'not active',
-  PENDING = 'pending',
-  SUSPENDED = 'suspended',
-}
+import { CompanyStatus } from '@/lib/api';
 
 export interface ActiveLabelProps {
-  status: Status;
+  status: CompanyStatus;
 }
 
 export default function StatusLabel({ status }: ActiveLabelProps) {
   const getLabelText = () => {
     switch (status) {
-      case Status.ACTIVE:
+      case CompanyStatus.ACTIVE:
         return 'Active';
-      case Status.NOT_ACTIVE:
+      case CompanyStatus.NOT_ACTIVE:
         return 'Not active';
-      case Status.PENDING:
+      case CompanyStatus.PENDING:
         return 'Pending';
-      case Status.SUSPENDED:
+      case CompanyStatus.SUSPENDED:
         return 'Suspended';
     }
   };
@@ -31,10 +25,10 @@ export default function StatusLabel({ status }: ActiveLabelProps) {
     <div
       className={clsx(
         styles.wrapper,
-        status === Status.ACTIVE && styles.success,
-        status === Status.NOT_ACTIVE && styles.error,
-        status === Status.PENDING && styles.warning,
-        status === Status.SUSPENDED && styles.info,
+        status === CompanyStatus.ACTIVE && styles.success,
+        status === CompanyStatus.NOT_ACTIVE && styles.error,
+        status === CompanyStatus.PENDING && styles.warning,
+        status === CompanyStatus.SUSPENDED && styles.info,
       )}
     >
       <div className={styles.dot} />

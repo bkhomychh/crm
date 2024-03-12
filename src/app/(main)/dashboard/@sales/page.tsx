@@ -5,49 +5,13 @@ import {
   SummaryTableHeader,
 } from '@/app/components';
 import companyImg from '@/assets/images/company.png';
-
-const data = [
-  {
-    id: 1,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-  {
-    id: 2,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-  {
-    id: 3,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-  {
-    id: 4,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-  {
-    id: 5,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-  {
-    id: 6,
-    name: 'Costco Wholesale',
-    sold: 459,
-    income: 600,
-  },
-];
+import { getSummarySales } from '@/lib/api';
 
 export interface PageProps {}
 
-export default function Page({}: PageProps) {
+export default async function Page({}: PageProps) {
+  const data = await getSummarySales();
+
   return (
     <DashboardCard title="Sales details">
       <SummaryTable
@@ -59,9 +23,11 @@ export default function Page({}: PageProps) {
           </>
         }
       >
-        {data.map(({ id, name, sold, income }) => (
+        {data.slice(0, 6).map(({ id, companyTitle, sold, income }) => (
           <tr key={id}>
-            <SummaryTableCell imgSrc={companyImg}>{name}</SummaryTableCell>
+            <SummaryTableCell imgSrc={companyImg}>
+              {companyTitle}
+            </SummaryTableCell>
             <SummaryTableCell align="center">{sold}</SummaryTableCell>
             <SummaryTableCell align="center">${income}</SummaryTableCell>
           </tr>

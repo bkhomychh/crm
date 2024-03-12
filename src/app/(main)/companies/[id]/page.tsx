@@ -1,44 +1,45 @@
-'use client';
+import { notFound } from 'next/navigation';
 
-import { useEffect } from 'react';
-import { notFound, useRouter } from 'next/navigation';
-import {
-  Button,
-  CompanyInfo,
-  CompanyPromotions,
-  ToolBar,
-} from '@/app/components';
+import { CompanyInfo, CompanyPromotions } from '@/app/components';
+import { Company, getCompany, getPromotions } from '@/lib/api';
+import { getQueryClient } from '@/lib/utils';
 import styles from '@/styles/companies/[id]/page.module.scss';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 interface PageProps {
   params: { id: string };
 }
 
-// export function generateStaticParams() {
-// return [{ id: '1' }, { id: '2' }, { id: '3' }];
-// }
+export default async function Page({ params }: PageProps) {
+  const queryClient = getQueryClient();
 
-export default function Page({ params }: PageProps) {
-  const router = useRouter();
+  await queryClient.prefetchQuery({
+    queryKey: ['companies', params.id],
+    queryFn: () => getCompany(params.id, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
 
-  useEffect(() => {
-    const id = Number.parseInt(params.id);
-    if (Number.isNaN(id)) {
-      notFound();
-    }
-  }, [params.id]);
+  await queryClient.prefetchQuery({
+    queryKey: ['promotions', params.id],
+    queryFn: () =>
+      getPromotions({ companyId: params.id }, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
+
+  const company = queryClient.getQueryData(['companies', params.id]) as Company;
+
+  if (!company) {
+    notFound();
+  }
+
+  const dehydratedState = dehydrate(queryClient);
 
   return (
-    <>
-      <ToolBar>
-        <Button onClick={() => router.push('/companies/1/new-promotion')}>
-          Add promotion
-        </Button>
-      </ToolBar>
+    <HydrationBoundary state={dehydratedState}>
       <div className={styles.container}>
-        <CompanyInfo companyId="1" />
-        <CompanyPromotions />
+        <CompanyInfo companyId={params.id} />
+        <CompanyPromotions companyId={params.id} />
       </div>
-    </>
+    </HydrationBoundary>
   );
 }

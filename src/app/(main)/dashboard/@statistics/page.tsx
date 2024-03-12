@@ -1,15 +1,24 @@
 import { StatCard } from '@/app/components';
+import { SummaryStats, getSummaryStats } from '@/lib/api';
 import styles from '@/styles/dashboard/statistics.module.scss';
+
+const labelByStat: Record<keyof SummaryStats, string> = {
+  promotions: 'Total promotions',
+  categories: 'Total categories',
+  newCompanies: 'New companies',
+  activeCompanies: 'Total active companies',
+};
 
 export interface PageProps {}
 
-export default function Page({}: PageProps) {
+export default async function Page({}: PageProps) {
+  const data = await getSummaryStats();
+
   return (
     <ul className={styles.list}>
-      <StatCard title="Total promotions" number={432} />
-      <StatCard title="Total category" number={8} />
-      <StatCard title="New companies" number={28} />
-      <StatCard title="Total active companies" number={670} />
+      {(Object.keys(labelByStat) as (keyof SummaryStats)[]).map((key) => (
+        <StatCard key={key} title={labelByStat[key]} number={data[key]} />
+      ))}
     </ul>
   );
 }

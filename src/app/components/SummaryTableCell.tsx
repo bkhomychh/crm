@@ -1,4 +1,5 @@
 import styles from '@/styles/dashboard/summary-table-cell.module.scss';
+import clsx from 'clsx';
 import Image, { StaticImageData } from 'next/image';
 
 export interface SummaryTableCellProps {
@@ -13,8 +14,8 @@ export default function SummaryTableCell({
   imgSrc,
 }: SummaryTableCellProps) {
   return (
-    <td className={styles.cell} style={{ textAlign: align }}>
-      <div className={styles.row}>
+    <td className={styles.cell} >
+      <div className={clsx(styles.row, styles[align])}>
         {imgSrc && <Image className={styles.img} src={imgSrc} alt="Preview" />}
         {children}
       </div>

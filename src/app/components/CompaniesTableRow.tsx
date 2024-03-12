@@ -1,43 +1,49 @@
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import styles from '@/styles/companies/companies-table-row.module.scss';
-import StatusLabel, { Status } from '@/app/components/StatusLabel';
-import Link from 'next/link';
+import { StatusLabel } from '@/app/components';
+import { CompanyStatus } from '@/lib/api';
 
 export interface CompaniesTableRowProps {
+  id: string;
   category: string;
-  company: { name: string; imgSrc: string | StaticImageData };
-  status: Status;
+  company: { name: string; imgSrc?: string | StaticImageData };
+  status: CompanyStatus;
   promotion: boolean;
   country: string;
-  data: string;
+  date: string;
 }
 
 export default function CompaniesTableRow({
+  id,
   category,
   company,
   status,
   promotion,
   country,
-  data,
+  date,
 }: CompaniesTableRowProps) {
   return (
     <tr className={styles.tableRow}>
       <td
         className={clsx(
           styles.category,
-          status === Status.ACTIVE && styles.success,
-          status === Status.NOT_ACTIVE && styles.error,
-          status === Status.PENDING && styles.warning,
-          status === Status.SUSPENDED && styles.info,
+          status === CompanyStatus.ACTIVE && styles.success,
+          status === CompanyStatus.NOT_ACTIVE && styles.error,
+          status === CompanyStatus.PENDING && styles.warning,
+          status === CompanyStatus.SUSPENDED && styles.info,
         )}
       >
         {category}
       </td>
       <td className={styles.cell}>
-        <Link className={styles.row} href="/companies/1">
-          <Image className={styles.img} src={company.imgSrc} alt="Preview" />
+        <Link className={styles.row} href={`/companies/${id}`}>
+          {company.imgSrc && (
+            <Image className={styles.img} src={company.imgSrc} alt="Preview" />
+          )}
+
           {company.name}
         </Link>
       </td>
@@ -61,7 +67,9 @@ export default function CompaniesTableRow({
         </div>
       </td>
       <td className={styles.cell}>{country}</td>
-      <td className={styles.cell}>{data}</td>
+      <td className={styles.cell}>
+        {new Date(date).toLocaleDateString('uk-UA')}
+      </td>
     </tr>
   );
 }

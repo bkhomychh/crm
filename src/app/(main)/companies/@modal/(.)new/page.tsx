@@ -10,7 +10,7 @@ export default function Page({}: PageProps) {
 
   return (
     <ModalWrapper isShown onClose={() => router.back()}>
-      <NewCompanyForm />
+      <NewCompanyForm onSubmit={() => router.back()} />
     </ModalWrapper>
   );
 }

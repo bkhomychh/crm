@@ -11,7 +11,7 @@ export interface SidebarProps {}
 
 export default function Sidebar({}: SidebarProps) {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <aside className={styles.aside}>
       <Link href="/">

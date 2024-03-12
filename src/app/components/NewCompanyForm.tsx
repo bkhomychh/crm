@@ -1,15 +1,41 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import Image from 'next/image';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { Button, Input, Label } from '@/components';
 import styles from '@/styles/companies/new/new-company-form.module.scss';
+import { CompanyStatus, createCompany } from '@/lib/api';
 
-export interface NewPromotionFormProps {}
+export type CompanyFieldValues = {
+  title: string;
+  description: string;
+  status: CompanyStatus;
+  joinedDate: string;
+  categoryId: string;
+  countryId: string;
+};
 
-export default function NewPromotionForm({}: NewPromotionFormProps) {
+export interface NewPromotionFormProps {
+  onSubmit?: (...args: any[]) => void;
+}
+
+export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [joinedDate, setJoinedDate] = useState('');
   const [image, setImage] = useState<File | null>(null);
+  const queryClient = useQueryClient();
+
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: createCompany,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['companies'],
+      });
+    },
+  });
 
   const handleImageUpload = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const file = target.files?.[0];
@@ -19,8 +45,32 @@ export default function NewPromotionForm({}: NewPromotionFormProps) {
     setImage(file);
   };
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const values = {
+      title,
+      description,
+      status: CompanyStatus.ACTIVE,
+      joinedDate,
+      categoryId: '',
+      countryId: '',
+      categoryTitle: '',
+      countryTitle: '',
+    };
+
+    try {
+      await mutateAsync(values);
+      if (onSubmit) {
+        onSubmit(values);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.row}>
