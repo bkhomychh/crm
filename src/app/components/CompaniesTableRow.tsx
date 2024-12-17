@@ -2,9 +2,10 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import styles from '@/styles/companies/companies-table-row.module.scss';
 import { StatusLabel } from '@/app/components';
 import { CompanyStatus } from '@/lib/api';
+import companyImg from '@/assets/images/company.png';
+import styles from '@/styles/companies/companies-table-row.module.scss';
 
 export interface CompaniesTableRowProps {
   id: string;
@@ -40,9 +41,17 @@ export default function CompaniesTableRow({
       </td>
       <td className={styles.cell}>
         <Link className={styles.row} href={`/companies/${id}`}>
-          {company.imgSrc && (
-            <Image className={styles.img} src={company.imgSrc} alt="Preview" />
-          )}
+          {/* {company.imgSrc && ( */}
+          <Image
+            unoptimized
+            className={styles.img}
+            // src={company.imgSrc}
+            src={companyImg}
+            width={32}
+            height={32}
+            alt="Preview"
+          />
+          {/* )} */}
 
           {company.name}
         </Link>

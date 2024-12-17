@@ -1,1 +1,2 @@
-export * from './getQueryClient'
+export * from './getQueryClient';
+export * from './schemas';

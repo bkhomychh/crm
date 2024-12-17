@@ -34,31 +34,33 @@ export default function CompaniesTable({}: CompaniesTableProps) {
           </tr>
         </thead>
 
-        {data?.map((company) => {
-          const {
-            id,
-            title,
-            categoryTitle,
-            status,
-            hasPromotions,
-            countryTitle,
-            joinedDate,
-            avatar,
-          } = company;
+        <tbody>
+          {data?.map((company) => {
+            const {
+              id,
+              title,
+              categoryTitle,
+              status,
+              hasPromotions,
+              countryTitle,
+              joinedDate,
+              avatar,
+            } = company;
 
-          return (
-            <CompaniesTableRow
-              key={id}
-              id={id}
-              category={categoryTitle}
-              company={{ name: title, imgSrc: avatar }}
-              status={status}
-              promotion={hasPromotions}
-              country={countryTitle}
-              date={joinedDate}
-            />
-          );
-        })}
+            return (
+              <CompaniesTableRow
+                key={id}
+                id={id}
+                category={categoryTitle}
+                company={{ name: title, imgSrc: avatar }}
+                status={status}
+                promotion={hasPromotions}
+                country={countryTitle}
+                date={joinedDate}
+              />
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

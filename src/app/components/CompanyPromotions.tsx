@@ -20,7 +20,9 @@ export default function CompanyPromotions({
 
   return (
     <ul className={styles.promotions}>
-      {data?.map((promotion) => <Promotion promotion={promotion} />)}
+      {data?.map((promotion) => (
+        <Promotion key={promotion.id} promotion={promotion} />
+      ))}
     </ul>
   );
 }

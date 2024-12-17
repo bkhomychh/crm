@@ -14,9 +14,17 @@ export default function SummaryTableCell({
   imgSrc,
 }: SummaryTableCellProps) {
   return (
-    <td className={styles.cell} >
+    <td className={styles.cell}>
       <div className={clsx(styles.row, styles[align])}>
-        {imgSrc && <Image className={styles.img} src={imgSrc} alt="Preview" />}
+        {imgSrc && (
+          <Image
+            className={styles.img}
+            src={imgSrc}
+            width={20}
+            height={20}
+            alt="Preview"
+          />
+        )}
         {children}
       </div>
     </td>

@@ -10,6 +10,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
     <html>
       <body>
         <p>Something globally went wrong :(</p>
+        <button onClick={reset}>reset</button>
       </body>
     </html>
   );

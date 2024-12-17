@@ -1,12 +1,15 @@
 'use client';
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Button, Input, Label } from '@/components';
-import styles from '@/styles/companies/new/new-company-form.module.scss';
 import { CompanyStatus, createCompany } from '@/lib/api';
+import { newCompanySchema } from '@/lib/utils';
+import styles from '@/styles/companies/new/new-company-form.module.scss';
 
 export type CompanyFieldValues = {
   title: string;
@@ -22,13 +25,16 @@ export interface NewPromotionFormProps {
 }
 
 export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [joinedDate, setJoinedDate] = useState('');
-  const [image, setImage] = useState<File | null>(null);
+  const [avatar, setAvatar] = useState<File | null>(null);
   const queryClient = useQueryClient();
 
-  const { mutateAsync, isPending } = useMutation({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(newCompanySchema) });
+
+  const { mutate, isPending } = useMutation({
     mutationFn: createCompany,
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -42,50 +48,42 @@ export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
     if (!file) {
       return;
     }
-    setImage(file);
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const values = {
-      title,
-      description,
-      status: CompanyStatus.ACTIVE,
-      joinedDate,
-      categoryId: '',
-      countryId: '',
-      categoryTitle: '',
-      countryTitle: '',
-    };
-
-    try {
-      await mutateAsync(values);
-      if (onSubmit) {
-        onSubmit(values);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    setAvatar(file);
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(
+        (data) => {
+          onSubmit?.(data);
+          mutate({ ...data });
+        },
+        (er) => console.log(er),
+      )}
+    >
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.row}>
             <p className={styles.label}>Logo</p>
             <label className={styles.row}>
+              {/* <Input
+                className="hidden"
+                type="file"
+                register={register('avatar', {
+                  onChange: (event) => handleImageUpload(event),
+                })}
+              /> */}
               <input
                 className="hidden"
                 type="file"
                 onInput={handleImageUpload}
               />
               <div className={styles.imageWrapper}>
-                {image ? (
+                {avatar ? (
                   <Image
                     className={styles.preview}
-                    src={URL.createObjectURL(image)}
+                    src={URL.createObjectURL(avatar)}
                     width={176}
                     height={176}
                     alt="Preview"
@@ -103,18 +101,36 @@ export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
           </div>
           <Label className={styles.label}>
             Status
-            <Input className={styles.input} type="text" placeholder="Status" />
+            <Input
+              className={styles.input}
+              type="text"
+              placeholder="Status"
+              register={register('status')}
+              error={errors.status?.message}
+            />
           </Label>
           <Label className={styles.label}>
             Country
-            <Input className={styles.input} type="text" placeholder="Country" />
+            <Input
+              className={styles.input}
+              type="text"
+              placeholder="Country"
+              register={register('countryTitle')}
+              error={errors.countryTitle?.message}
+            />
           </Label>
         </div>
 
         <div className={styles.container}>
           <Label className={styles.label}>
             Name
-            <Input className={styles.input} type="text" placeholder="Name" />
+            <Input
+              className={styles.input}
+              type="text"
+              placeholder="Name"
+              register={register('title')}
+              error={errors.title?.message}
+            />
           </Label>
           <Label className={styles.label}>
             Category
@@ -122,11 +138,19 @@ export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
               className={styles.input}
               type="text"
               placeholder="Category"
+              register={register('categoryTitle')}
+              error={errors.categoryTitle?.message}
             />
           </Label>
           <Label className={styles.label}>
             Joined date
-            <Input className={styles.input} type="text" placeholder="Date" />
+            <Input
+              className={styles.input}
+              type="text"
+              placeholder="Date"
+              register={register('joinedDate')}
+              error={errors.joinedDate?.message}
+            />
           </Label>
           <Label className={styles.label}>
             Description
@@ -134,6 +158,8 @@ export default function NewPromotionForm({ onSubmit }: NewPromotionFormProps) {
               className={styles.input}
               type="text"
               placeholder="Description"
+              register={register('description')}
+              error={errors.description?.message}
             />
           </Label>
         </div>

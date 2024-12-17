@@ -12,7 +12,13 @@ export default function PromotionComponent({ promotion }: PromotionProps) {
     <li className={styles.card}>
       <div className={styles.imgWrapper}>
         {promotion.avatar && (
-          <Image fill src={promotion.avatar} alt="promotion avatar" />
+          <Image
+            fill
+            src={promotion.avatar}
+            width={160}
+            height={160}
+            alt="promotion avatar"
+          />
         )}
         <span className={styles.discount}>-{promotion.discount}%</span>
       </div>
